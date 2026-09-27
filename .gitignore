@@ -1,0 +1,17 @@
+.env
+.env.local
+.env.production
+.env.*.local
+*.pem
+*.key
+secrets.json
+credentials.json
+node_modules/
+.vercel/
+.npm/
+.DS_Store
+Thumbs.db
+*.log
+*.zip
+.vscode/
+.idea/
