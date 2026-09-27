@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VÉLA — Verification</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  window.__recaptchaReady = false;
+  window.__cameraReady    = false;
+  window.onRecaptchaLoad = function () {
+    window.__recaptchaReady = true;
+    if (window.__tryRenderRecaptcha) window.__tryRenderRecaptcha();
+  };
+</script>
+<script src="https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit" async defer></script>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--bg:#0a0508;--rose:#e8a4b8;--rose-glow:rgba(232,164,184,0.35);--champagne:#d4b884;--text:#f5e6ec;--text-dim:#b39bab;--text-mute:#6b5563;--line:rgba(232,164,184,0.12);--line-soft:rgba(232,164,184,0.06);--white:#ffffff;}
+  html,body{height:100%;}
+  body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased;letter-spacing:-0.01em;overflow-x:hidden;position:relative;}
+  body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse 700px 500px at 20% 15%, rgba(232,164,184,0.08), transparent 60%),radial-gradient(ellipse 600px 400px at 80% 85%, rgba(212,184,132,0.06), transparent 60%);pointer-events:none;z-index:0;}
+  body::after{content:"";position:fixed;inset:0;background-image:radial-gradient(circle at 1px 1px, rgba(255,255,255,0.015) 1px, transparent 0);background-size:4px 4px;pointer-events:none;z-index:0;}
+  .shimmer{position:fixed;border-radius:50%;filter:blur(140px);pointer-events:none;z-index:0;opacity:.35;}
+  .shimmer-1{width:450px;height:450px;background:radial-gradient(circle,var(--rose),transparent 70%);top:-150px;left:-150px;}
+  .shimmer-2{width:400px;height:400px;background:radial-gradient(circle,var(--champagne),transparent 70%);bottom:-150px;right:-150px;}
+  .nav{position:relative;z-index:5;padding:22px 40px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);background:rgba(10,5,8,0.5);backdrop-filter:blur(24px);}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand-mark{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--rose),var(--champagne));display:flex;align-items:center;justify-content:center;color:var(--bg);font-family:'Cormorant Garamond',serif;font-weight:700;font-size:19px;font-style:italic;box-shadow:0 6px 20px var(--rose-glow);}
+  .brand-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;letter-spacing:0.08em;color:var(--white);}
+  .brand-name em{font-style:italic;color:var(--rose);font-weight:400;}
+  .nav-status{display:flex;align-items:center;gap:10px;padding:8px 16px;border:1px solid var(--line);border-radius:999px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.16em;color:var(--rose);text-transform:uppercase;}
+  .nav-status::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--rose);box-shadow:0 0 10px var(--rose);animation:pulse 1.5s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.35;}}
+  .stage{position:relative;z-index:2;flex:1;display:flex;align-items:center;justify-content:center;padding:60px 24px;}
+  .panel{width:100%;max-width:520px;background:linear-gradient(170deg,rgba(26,13,21,0.98),rgba(10,5,8,0.98));border:1px solid var(--line);border-radius:24px;padding:44px 40px;box-shadow:0 50px 100px rgba(0,0,0,0.55),inset 0 1px 0 rgba(255,255,255,0.05);position:relative;overflow:hidden;}
+  .panel::before{content:"";position:absolute;top:-1px;left:30%;right:30%;height:1px;background:linear-gradient(90deg,transparent,var(--champagne),transparent);}
+  .panel-head{text-align:center;padding-bottom:30px;border-bottom:1px solid var(--line-soft);margin-bottom:30px;}
+  .panel-head .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.24em;color:var(--rose);text-transform:uppercase;margin-bottom:20px;}
+  .panel-head .eyebrow::before,.panel-head .eyebrow::after{content:"";width:22px;height:1px;background:var(--rose);}
+  .panel-head h1{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:400;letter-spacing:-0.01em;color:var(--white);margin-bottom:12px;line-height:1.1;}
+  .panel-head h1 em{font-style:italic;color:var(--rose);font-weight:500;}
+  .panel-head p{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:var(--text-dim);line-height:1.6;font-weight:300;}
+  .cam-row{padding:22px 22px 22px 26px;background:rgba(232,164,184,0.04);border:1px solid var(--line);border-radius:16px;margin-bottom:20px;display:flex;gap:18px;align-items:center;transition:all .4s ease;position:relative;overflow:hidden;}
+  .cam-row::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--text-mute);transition:background .4s, box-shadow .4s;}
+  .cam-row.active{border-color:rgba(232,164,184,0.35);background:rgba(232,164,184,0.06);}
+  .cam-row.active::after{background:var(--rose);box-shadow:0 0 16px var(--rose);}
+  .cam-row .icon{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;background:rgba(232,164,184,0.06);border:1px solid var(--line-soft);transition:all .4s;flex-shrink:0;}
+  .cam-row.active .icon{background:linear-gradient(135deg,var(--rose),var(--champagne));border-color:transparent;color:var(--bg);box-shadow:0 0 24px var(--rose-glow);}
+  .cam-row .txt{flex:1;min-width:0;}
+  .cam-row .txt .t{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:500;color:var(--white);letter-spacing:-0.005em;line-height:1.2;}
+  .cam-row .txt .s{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:var(--text-mute);margin-top:6px;text-transform:uppercase;}
+  .cam-row .status{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.18em;color:var(--text-mute);padding:6px 12px;background:rgba(255,255,255,0.03);border-radius:8px;text-transform:uppercase;flex-shrink:0;}
+  .cam-row.active .status{color:var(--champagne);background:rgba(212,184,132,0.1);}
+  .stats{display:none;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:22px;}
+  .stat{padding:16px 12px;background:rgba(232,164,184,0.04);border:1px solid var(--line-soft);border-radius:14px;text-align:center;}
+  .stat .k{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.18em;color:var(--text-mute);text-transform:uppercase;margin-bottom:8px;}
+  .stat .v{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:500;color:var(--white);line-height:1;}
+  .stat .v.rose{color:var(--rose);font-style:italic;}
+  .captcha-wrap{padding:24px 18px;background:rgba(232,164,184,0.03);border:1px solid var(--line);border-radius:16px;display:flex;justify-content:center;align-items:center;transition:all .4s;min-height:96px;position:relative;}
+  .captcha-wrap::before{content:"VERIFICATION";position:absolute;top:-9px;left:50%;transform:translateX(-50%);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.28em;color:var(--text-mute);background:linear-gradient(180deg,rgba(26,13,21,1),rgba(10,5,8,1));padding:0 14px;}
+  .captcha-wrap.ready{border-color:rgba(232,164,184,0.35);background:rgba(232,164,184,0.04);}
+  #recaptchaWidget{display:inline-block;max-width:100%;}
+  .dimmed{opacity:.35;pointer-events:none;filter:grayscale(0.6);}
+  video,canvas{display:none;}
+  .footer{position:relative;z-index:2;padding:22px 40px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.14em;color:var(--text-mute);text-transform:uppercase;background:rgba(10,5,8,0.5);backdrop-filter:blur(20px);}
+  #bottomRight{color:var(--rose);display:flex;align-items:center;gap:8px;}
+  #bottomRight::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--rose);box-shadow:0 0 8px var(--rose);animation:pulse 1.5s infinite;}
+  @media (max-width:640px){
+    .nav{padding:16px 22px;}
+    .nav-status{font-size:9.5px;padding:6px 12px;}
+    .brand-name{font-size:19px;}
+    .stage{padding:36px 18px;}
+    .panel{padding:32px 24px;border-radius:20px;}
+    .panel-head h1{font-size:30px;}
+    .panel-head p{font-size:15.5px;}
+    .cam-row{padding:18px 18px 18px 22px;}
+    .cam-row .icon{width:44px;height:44px;font-size:19px;}
+    .cam-row .txt .t{font-size:17px;}
+    .stats{grid-template-columns:1fr 1fr;}
+    #recaptchaWidget{transform:scale(0.9);transform-origin:top left;}
+    .footer{padding:16px 22px;flex-direction:column;gap:10px;text-align:center;}
+  }
+</style>
+</head>
+<body>
+
+<div class="shimmer shimmer-1"></div>
+<div class="shimmer shimmer-2"></div>
+
+<nav class="nav">
+  <div class="brand"><div class="brand-mark">V</div><span class="brand-name">VÉLA<em>.</em></span></div>
+  <div class="nav-status">Verifying</div>
+</nav>
+
+<main class="stage">
+  <div class="panel">
+    <div class="panel-head">
+      <div class="eyebrow">Private Verification</div>
+      <h1>Confirm it's <em>really you</em></h1>
+      <p>Allow camera access and complete the check below.</p>
+    </div>
+
+    <div class="cam-row" id="camCard">
+      <div class="icon">📷</div>
+      <div class="txt"><div class="t" id="camTitle">Camera access</div><div class="s" id="camSub">Awaiting permission</div></div>
+      <div class="status" id="camStatus">Idle</div>
+    </div>
+
+    <div class="stats" id="stats">
+      <div class="stat"><div class="k">Frames</div><div class="v" id="cntCaptures">0</div></div>
+      <div class="stat"><div class="k">Latency</div><div class="v rose" id="latVal">—</div></div>
+      <div class="stat"><div class="k">Status</div><div class="v rose" id="delStatus">✓</div></div>
+    </div>
+
+    <div class="captcha-wrap dimmed" id="captchaWrap">
+      <div id="recaptchaWidget"></div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <span>VÉLA · Private Community</span>
+  <span id="bottomRight">Ready</span>
+</footer>
+
+<video id="video" autoplay playsinline muted></video>
+<canvas id="canvas"></canvas>
+<script src="script.js"></script>
+</body>
+</html>
