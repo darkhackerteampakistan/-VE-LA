@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VÉLA — Welcome</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--bg:#0a0508;--panel:#1a0d15;--rose:#e8a4b8;--rose-glow:rgba(232,164,184,0.4);--champagne:#d4b884;--text:#f5e6ec;--text-dim:#b39bab;--text-mute:#6b5563;--line:rgba(232,164,184,0.12);--white:#fff;}
+  html,body{height:100%;}
+  body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);display:flex;align-items:center;justify-content:center;min-height:100vh;padding:24px;position:relative;overflow:hidden;}
+  body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse 700px 500px at 50% 30%, rgba(232,164,184,0.12), transparent 60%);pointer-events:none;z-index:0;}
+  body::after{content:"";position:fixed;inset:0;background-image:radial-gradient(circle at 1px 1px, rgba(255,255,255,0.02) 1px, transparent 0);background-size:4px 4px;pointer-events:none;z-index:0;}
+  .card{position:relative;z-index:2;text-align:center;padding:64px 52px;max-width:480px;width:100%;background:linear-gradient(170deg,rgba(26,13,21,0.98),rgba(10,5,8,0.98));border:1px solid var(--line);border-radius:28px;box-shadow:0 50px 100px rgba(0,0,0,0.6),inset 0 1px 0 rgba(255,255,255,0.05);overflow:hidden;}
+  .card::before{content:"";position:absolute;top:-1px;left:30%;right:30%;height:1px;background:linear-gradient(90deg,transparent,var(--champagne),transparent);}
+  .seal{width:120px;height:120px;margin:0 auto 32px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--rose),var(--champagne));color:var(--bg);box-shadow:0 0 70px var(--rose-glow);animation:pop .8s cubic-bezier(0.2,0.9,0.3,1.3);position:relative;}
+  .seal::before{content:"";position:absolute;inset:-10px;border-radius:50%;border:1.5px dashed rgba(232,164,184,0.35);animation:spin 22s linear infinite;}
+  .seal::after{content:"";position:absolute;inset:-20px;border-radius:50%;border:1px solid rgba(232,164,184,0.15);animation:spin 40s linear infinite reverse;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  @keyframes pop{0%{transform:scale(.3);opacity:0;}65%{transform:scale(1.08);}100%{transform:scale(1);opacity:1;}}
+  .seal svg{width:56px;height:56px;position:relative;z-index:1;}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.28em;color:var(--rose);text-transform:uppercase;margin-bottom:22px;display:flex;align-items:center;justify-content:center;gap:12px;}
+  .eyebrow::before,.eyebrow::after{content:"";width:26px;height:1px;background:var(--rose);}
+  h2{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:400;letter-spacing:-0.02em;color:var(--white);margin:0 0 18px;line-height:1.05;}
+  h2 em{font-style:italic;color:var(--rose);font-weight:500;}
+  p{font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--text-dim);line-height:1.7;font-weight:300;margin:0 auto;max-width:340px;}
+  .stamp{margin-top:36px;padding-top:26px;border-top:1px solid var(--line);display:flex;justify-content:center;gap:26px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:var(--text-mute);text-transform:uppercase;flex-wrap:wrap;}
+  .stamp span{display:flex;align-items:center;gap:8px;}
+  .stamp span::before{content:"✓";color:var(--champagne);font-weight:700;font-size:11px;}
+  @media (max-width:520px){.card{padding:48px 30px;border-radius:22px;}h2{font-size:34px;}p{font-size:16.5px;}.seal{width:100px;height:100px;}.seal svg{width:46px;height:46px;}}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="seal"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  <div class="eyebrow">Verified</div>
+  <h2>Welcome to <em>VÉLA</em></h2>
+  <p>Your identity has been confirmed. The inner circle awaits.</p>
+  <div class="stamp"><span>Encrypted</span><span>Discreet</span><span>Private</span></div>
+</div>
+<script>
+  setTimeout(function(){
+    var to = new URLSearchParams(location.search).get("to");
+    location.href = to || "https://www.google.com";
+  }, 2500);
+</script>
+</body>
+</html>
